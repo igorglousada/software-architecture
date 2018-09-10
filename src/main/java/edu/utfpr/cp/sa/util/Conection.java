@@ -11,30 +11,25 @@ import java.sql.*;
  * @author igorl_000
  */
 public class Conection {
+    /*    String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost/aqtsoft?autoReconnect=true&useSSL=false";
+        String user = "root";
+        String password = "";*/
+    public static Connection Conector() {
+        java.sql.Connection conection = null;
     String dbURL = "jdbc:mysql://localhost:3306/arquitetura";
     String username = "root";
-    String password = "IGlousada171";   
+    String password = "sofia199516oi"; 
+    String driver = "com.mysql.jdbc.Driver";
     
-    public void insert(){
-        try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
-     
-        // code to execute SQL queries goes here...
-            String sql = "INSERT INTO customer (name, phone, age, creditLimit, country) VALUES (?, ?, ?, ?, ?)";
- 
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, "bill");
-            statement.setString(2, "secretpass");
-            statement.setInt(3, 12);
-            statement.setDouble(4, 44);
-            statement.setString(5, "bla bla bla");
-
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                System.out.println("A new user was inserted successfully!");
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+    try {
+            Class.forName(driver);
+            conection = DriverManager.getConnection(dbURL, username, password);
+            return conection;
+        } catch (Exception e) {
+            System.err.println("\n " + e.getCause());
+            System.err.println("\n " + e.getMessage());
+            throw new RuntimeException(e);
         }
     }
     

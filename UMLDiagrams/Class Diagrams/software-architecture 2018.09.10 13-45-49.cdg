@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="software-architecture">
+  <ClassDiagramComponents>
+    <Class name="Customer" package="edu.utfpr.cp.sa.entity" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="phone" type="String" visibility="private"/>
+        <Field name="age" type="int" visibility="private"/>
+        <Field name="creditLimit" type="double" visibility="private"/>
+        <Field name="country" type="Country" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getPhone" returnType="String" visibility="public"/>
+        <Method name="setPhone" returnType="void" visibility="public">
+          <Argument type="String" name="phone"/>
+        </Method>
+        <Method name="getAge" returnType="int" visibility="public"/>
+        <Method name="setAge" returnType="void" visibility="public">
+          <Argument type="int" name="age"/>
+        </Method>
+        <Method name="getCreditLimit" returnType="double" visibility="public"/>
+        <Method name="setCreditLimit" returnType="void" visibility="public">
+          <Argument type="double" name="creditLimit"/>
+        </Method>
+        <Method name="getCountry" returnType="Country" visibility="public"/>
+        <Method name="setCountry" returnType="void" visibility="public">
+          <Argument type="Country" name="country"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Country" package="edu.utfpr.cp.sa.entity" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="acronym" type="String" visibility="private"/>
+        <Field name="phoneDigits" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getAcronym" returnType="String" visibility="public"/>
+        <Method name="setAcronym" returnType="void" visibility="public">
+          <Argument type="String" name="acronym"/>
+        </Method>
+        <Method name="getPhoneDigits" returnType="int" visibility="public"/>
+        <Method name="setPhoneDigits" returnType="void" visibility="public">
+          <Argument type="int" name="phoneDigits"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CustomerDAO" package="edu.utfpr.cp.sa.dao" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="conn" type="Connection" visibility="private" isFinal="true"/>
+        <Field name="ps" type="PreparedStatement" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="insert" returnType="void" visibility="public">
+          <Argument type="Customer" name="cust"/>
+        </Method>
+        <Method name="listarCustomer" returnType="ArrayList&lt;Customer&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="CountryDAO" package="edu.utfpr.cp.sa.dao" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="conn" type="Connection" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="insert" returnType="void" visibility="public">
+          <Argument type="Country" name="country"/>
+        </Method>
+        <Method name="listarCountry" returnType="ArrayList&lt;Country&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MainWindow" package="edu.utfpr.cp.sa.gui" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="contentPane" type="JPanel" visibility="private"/>
+        <Field name="customers" type="Set&lt;Customer&gt;" visibility="private"/>
+        <Field name="countries" type="Set&lt;Country&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CustomerTableModel" package="edu.utfpr.cp.sa.gui" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="customers" type="ArrayList&lt;Customer&gt;" visibility="private"/>
+        <Field name="columnNames" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Set&lt;Customer&gt;" name="customers"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getRowCount" returnType="int" visibility="public"/>
+        <Method name="getColumnCount" returnType="int" visibility="public"/>
+        <Method name="getColumnName" returnType="String" visibility="public">
+          <Argument type="int" name="column"/>
+        </Method>
+        <Method name="getValueAt" returnType="Object" visibility="public">
+          <Argument type="int" name="rowIndex"/>
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CustomerWindow" package="edu.utfpr.cp.sa.gui" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="contentPane" type="JPanel" visibility="private"/>
+        <Field name="name" type="JTextField" visibility="private"/>
+        <Field name="phone" type="JTextField" visibility="private"/>
+        <Field name="age" type="JTextField" visibility="private"/>
+        <Field name="country" type="JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="table" type="JTable" visibility="private"/>
+        <Field name="customers" type="Set&lt;Customer&gt;" visibility="private"/>
+        <Field name="countries" type="Set&lt;Country&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Set&lt;Customer&gt;" name="customers"/>
+          <Argument type="Set&lt;Country&gt;" name="countries"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="create" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="CountryTableModel" package="edu.utfpr.cp.sa.gui" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="countries" type="ArrayList&lt;Country&gt;" visibility="private"/>
+        <Field name="columnNames" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Set&lt;Country&gt;" name="countries"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getRowCount" returnType="int" visibility="public"/>
+        <Method name="getColumnCount" returnType="int" visibility="public"/>
+        <Method name="getColumnName" returnType="String" visibility="public">
+          <Argument type="int" name="column"/>
+        </Method>
+        <Method name="getValueAt" returnType="Object" visibility="public">
+          <Argument type="int" name="rowIndex"/>
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CountryWindow" package="edu.utfpr.cp.sa.gui" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="contentPane" type="JPanel" visibility="private"/>
+        <Field name="name" type="JTextField" visibility="private"/>
+        <Field name="acronym" type="JTextField" visibility="private"/>
+        <Field name="phoneDigits" type="JTextField" visibility="private"/>
+        <Field name="table" type="JTable" visibility="private"/>
+        <Field name="countries" type="Set&lt;Country&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Set&lt;Country&gt;" name="countries"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="create" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="Conection" package="edu.utfpr.cp.sa.util" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="Conector" returnType="Connection" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="customers" source="edu.utfpr.cp.sa.gui.MainWindow" target="edu.utfpr.cp.sa.entity.Customer" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Set&lt;Customer&gt;"/>
+    <HasRelation name="customers" source="edu.utfpr.cp.sa.gui.CustomerWindow" target="edu.utfpr.cp.sa.entity.Customer" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Set&lt;Customer&gt;"/>
+    <HasRelation name="countries" source="edu.utfpr.cp.sa.gui.MainWindow" target="edu.utfpr.cp.sa.entity.Country" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Set&lt;Country&gt;"/>
+    <HasRelation name="countries" source="edu.utfpr.cp.sa.gui.CountryWindow" target="edu.utfpr.cp.sa.entity.Country" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Set&lt;Country&gt;"/>
+    <HasRelation name="country" source="edu.utfpr.cp.sa.entity.Customer" target="edu.utfpr.cp.sa.entity.Country" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="edu.utfpr.cp.sa.entity.Customer" target="edu.utfpr.cp.sa.entity.Country" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="edu.utfpr.cp.sa.dao.CountryDAO" target="edu.utfpr.cp.sa.entity.Country" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="edu.utfpr.cp.sa.dao.CustomerDAO" target="edu.utfpr.cp.sa.entity.Customer" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="countries" source="edu.utfpr.cp.sa.gui.CustomerWindow" target="edu.utfpr.cp.sa.entity.Country" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Set&lt;Country&gt;"/>
+    <HasRelation name="countries" source="edu.utfpr.cp.sa.gui.CountryTableModel" target="edu.utfpr.cp.sa.entity.Country" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Country&gt;"/>
+    <HasRelation name="customers" source="edu.utfpr.cp.sa.gui.CustomerTableModel" target="edu.utfpr.cp.sa.entity.Customer" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Customer&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
