@@ -1,4 +1,1 @@
-﻿Membros:
-Gisely da Silva Macedo
-Igor Ricardo Gonçalves Lousada
-Sofia Baracat Lapenta Janzantti
+GRUPO: Gisely da Silva Macedo, Igor Ricardo Gon�alves Lousada, Sofia Baracat Lapenta Janzantti
